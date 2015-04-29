@@ -1,0 +1,39 @@
+@home-card-gutter: floor((@grid-gutter-width / 2));
+
+html, body {
+  min-height: 100%;
+}
+
+.home, .bento, .staffdir{
+  height: 100%;
+  width: 100%;
+  > .wrap {
+    position:relative;
+    margin-top: 111px;
+
+    @media (max-width: @grid-float-breakpoint) {
+      margin-top: 0px;
+    }
+  }
+}
+
+.home {
+  background: url('../img/quad-sunset-lg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: transparent;
+
+  .home-slice{
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+// TODO: put in proper method to only show background image on home page with web apps.
+.bento, .staffdir {
+  background-image: none;
+  background-color: @body-bg;
+
+}
