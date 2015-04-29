@@ -1,0 +1,11 @@
+/*
+Theme Name:   SMC Child Theme
+Theme URI:   https://github.com/ualibweb/SMC_roots-ualib-child
+Description:  https://github.com/ualibweb/SMC_roots-ualib-child
+Author:     Alex Hollinghead, Scott Barnes
+Author URI:   http://lib.ua.edu/smc/
+Template:    roots-ualib
+Version:    0.1
+*/
+
+@import url("../roots-ualib/style.css");
