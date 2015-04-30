@@ -1,6 +1,6 @@
 {
   "name": "SMC_roots-ualib-child",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/ualibweb/SMC_roots-ualib-child",
   "license": "ECL-2.0",
   "private": true,
@@ -12,8 +12,9 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "1.11.1",
-    "bootstrap": "3.3.2",
-    "respond": "1.4.2"
+    "respond": "1.4.2",
+    "bootstrap-sass": "~3.3.4",
+    "roots-ualib": "https://github.com/ualibweb/roots-ualib.git"
   },
   "resolutions": {
     "angular": ">=1 <1.3.0",

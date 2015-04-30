@@ -10,6 +10,9 @@ assets/vendor/modernizr/*
 #assets/js/vendor/modernizr.min.js
 assets/manifest.json
 
+#ignore SASS cache
+.sass-cache
+
 # Ignore the styleguide folder used for testing
 styleguide/
 

@@ -31,15 +31,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    'assets/css/main.css': 'assets/sass/**/*.scss'
-                }
-            },
-            build: {
-                options: {
-                    style: 'compressed'
-                },
-                files: {
-                    'assets/css/main.min.css': 'assets/sass/**/*.scss'
+                    'assets/css/smc.css': 'assets/sass/smc.scss'
                 }
             }
         },
@@ -47,9 +39,13 @@ module.exports = function(grunt) {
             options: {
                 separator: ';'
             },
-            dist: {
-                src: [jsFileList],
+            js: {
+                src: ['<%=bower.directory%>/roots-ualib/assets/js/scripts.js', jsFileList],
                 dest: 'assets/js/scripts.js'
+            },
+            css: {
+                src: '<%=bower.directory%>/roots-ualib/assets/css/main.css',
+                dest: 'assets/css/main.css'
             }
         },
         uglify: {
@@ -133,10 +129,11 @@ module.exports = function(grunt) {
                 ],
                 tasks: ['sass:dev']
             },
-            js: {
+            jsCss: {
                 files: [
                     jsFileList,
-                    '<%= jshint.all %>'
+                    '<%= jshint.all %>',
+                    '<%=bower.directory%>/roots-ualib/assets/css/main.css'
                 ],
                 tasks: ['jshint', 'concat']
             },
@@ -147,7 +144,7 @@ module.exports = function(grunt) {
                     livereload: false
                 },
                 files: [
-                    'assets/css/main.css',
+                    'assets/css/smc.css',
                     'assets/js/scripts.js',
                     'templates/*.php',
                     '*.php'

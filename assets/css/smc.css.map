@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA,MAAO;EACL,OAAO,EAAE,UAAU;EACnB,WAAW,EAAE,gCAAgC;EAC7C,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,IAAI",
+"sources": ["../sass/test.scss"],
+"names": [],
+"file": "smc.css"
+}

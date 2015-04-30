@@ -3,7 +3,7 @@
  * Scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/main.css
+ * 1. /theme/assets/css/smc.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.11.1.min.js via Google CDN
@@ -21,7 +21,7 @@ function roots_scripts() {
    */
   if (WP_ENV === 'development') {
     $assets = array(
-      'css'       => '/assets/css/main.css',
+      'css'       => '/assets/css/smc.css',
       'CDN'       => '//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Oxygen:300,400,700|Open+Sans:300,400,600,700|EB+Garamond|Lato:300,400,700',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
@@ -31,7 +31,7 @@ function roots_scripts() {
     $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
     $assets     = json_decode($get_assets, true);
     $assets     = array(
-      'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
+      'css'       => '/assets/css/smc.min.css?' . $assets['assets/css/smc.min.css']['hash'],
       'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
@@ -40,6 +40,7 @@ function roots_scripts() {
 
   wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
   wp_enqueue_style('roots_cdn', $assets['CDN'], false, null);
+
 
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
