@@ -40,12 +40,17 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             js: {
-                src: ['<%=bower.directory%>/roots-ualib/assets/js/scripts.js', jsFileList],
-                dest: 'assets/js/scripts.js'
-            },
-            css: {
-                src: '<%=bower.directory%>/roots-ualib/assets/css/main.css',
-                dest: 'assets/css/main.css'
+                src: [jsFileList],
+                dest: 'assets/js/smc.js'
+            }
+        },
+        copy: {
+            ualib: {
+                files: [
+                    {expand: true, cwd: '<%=bower.directory%>/roots-ualib/templates', src: '*.php', dest: 'templates/', filter: 'isFile'},
+                    {expand: true, cwd: '<%=bower.directory%>/roots-ualib/assets/css/', src: 'main.css', dest: 'assets/css/', filter: 'isFile'},
+                    {expand: true, cwd: '<%=bower.directory%>/roots-ualib/assets/js/', src: 'scripts.js', dest: 'assets/js/', filter: 'isFile'}
+                ]
             }
         },
         uglify: {
@@ -65,10 +70,10 @@ module.exports = function(grunt) {
                         prev: 'assets/css/'
                     }
                 },
-                src: 'assets/css/main.css'
+                src: 'assets/css/smc.css'
             },
             build: {
-                src: 'assets/css/main.min.css'
+                src: 'assets/css/smc.min.css'
             }
         },
         modernizr: {
@@ -77,8 +82,8 @@ module.exports = function(grunt) {
                 outputFile: 'assets/js/vendor/modernizr.min.js',
                 files: {
                     'src': [
-                        ['assets/js/scripts.min.js'],
-                        ['assets/css/main.min.css']
+                        ['assets/js/smc.min.js'],
+                        ['assets/css/smc.min.css']
                     ]
                 },
                 extra: {
@@ -100,7 +105,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    'lib/scripts.php': 'assets/{css,js}/{main,scripts}.min.{css,js}'
+                    'lib/scripts.php': 'assets/{css,js}/{smc,smc}.min.{css,js}'
                 }
             }
         },
@@ -129,11 +134,10 @@ module.exports = function(grunt) {
                 ],
                 tasks: ['sass:dev']
             },
-            jsCss: {
+            js: {
                 files: [
                     jsFileList,
-                    '<%= jshint.all %>',
-                    '<%=bower.directory%>/roots-ualib/assets/css/main.css'
+                    '<%= jshint.all %>'
                 ],
                 tasks: ['jshint', 'concat']
             },
@@ -163,12 +167,7 @@ module.exports = function(grunt) {
         'autoprefixer:dev',
         'concat'
     ]);
-    grunt.registerTask('build', [
-        'jshint',
-        'sass:build',
-        'autoprefixer:build',
-        'uglify',
-        'modernizr',
-        'version'
+    grunt.registerTask('update-ualib', [
+        'copy:ualib'
     ]);
 };

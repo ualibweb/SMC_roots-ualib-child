@@ -21,9 +21,11 @@ function roots_scripts() {
    */
   if (WP_ENV === 'development') {
     $assets = array(
+      'ualib_css'  => '/assets/css/main.css',
       'css'       => '/assets/css/smc.css',
       'CDN'       => '//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700|Oxygen:300,400,700|Open+Sans:300,400,600,700|EB+Garamond|Lato:300,400,700',
-      'js'        => '/assets/js/scripts.js',
+      'ualib_js'  => '/assets/js/scripts.js',
+      'js'        => '/assets/js/smc.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
@@ -38,7 +40,8 @@ function roots_scripts() {
     );
   }
 
-  wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
+    wp_enqueue_style('roots_ualib_css', get_template_directory_uri() . $assets['ualib_css'], false, null);
+    wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
   wp_enqueue_style('roots_cdn', $assets['CDN'], false, null);
 
 
@@ -59,6 +62,7 @@ function roots_scripts() {
 
   wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, true);
   wp_enqueue_script('jquery');
+  wp_enqueue_script('roots_ualib_js', get_template_directory_uri() . $assets['ualib_js'], array(), null, true);
   wp_enqueue_script('roots_js', get_template_directory_uri() . $assets['js'], array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
