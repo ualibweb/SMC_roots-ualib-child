@@ -11,6 +11,13 @@ Sanford Media Center's "child" theme of the roots-ualib WordPress theme
 When activating the theme in WordPress, select `No` for options *Create navigation menu?* and *Add pages to menu?*
 
 ## Updating the theme
+
+### SASS styles
+Add `@import` for you SASS files in `assets/sass/smc.scss`. This file acts as the entry point for you styles.
+
+See the `assets/sass/test.scss` is handled as an example. This file is mean to demonstrate the `@import` dependency chain. Delete is after before you start committing to the style.
+
+### Package version
 After testing theme changes, but before committing them, use the `grunt bump` task to update the theme's version. This will allow other build scripts to know when the theme has been updated.
 
 `grunt bump` follows the [semantic versioning](http://semver.org/) convention.
