@@ -1,1 +1,7 @@
-{"version":3,"sources":["smc.css","../sass/test.scss"],"names":[],"mappings":"AAAA,uDAAsD;ACAtD;EACE,qBAAmB;EACnB,+CAA6C;EAC7C,kBAAgB;EAChB,mBAAiB;EDElB","file":"smc.css"}
+{
+"version": 3,
+"mappings": ";AAAA,MAAO;EACL,OAAO,EAAE,UAAU;EACnB,WAAW,EAAE,gCAAgC;EAC7C,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,IAAI;;;ACEnB,IAAK;EACH,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,GAAG",
+"sources": ["../sass/test.scss","../sass/smc.scss"],
+"names": [],
+"file": "smc.css"
+}
