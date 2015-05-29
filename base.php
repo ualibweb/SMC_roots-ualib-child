@@ -11,7 +11,7 @@
     do_action('get_header');
     get_template_part('templates/header');
   ?>
-
+<div class="banner"></div>
   <?php //if (is_front_page()) get_template_part('templates/home-tmp'); ?>
 
   <div class="wrap">
