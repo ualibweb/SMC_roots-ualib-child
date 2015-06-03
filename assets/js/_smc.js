@@ -1,4 +1,4 @@
-angular.module('ualib', ['ualib'])
+angular.module('ualib')
 
 .controller('ModalDemoCtrl', function ($scope, $modal) {
 
