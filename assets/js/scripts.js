@@ -27337,7 +27337,7 @@ angular.module('a8m.xor', [])
  * @kind function
  *
  * @description
- * Convert bytes into appropriate display 
+ * Convert bytes into appropriate display
  * 1024 bytes => 1 KB
  */
 angular.module('a8m.math.byteFmt', ['a8m.math'])
@@ -27384,15 +27384,15 @@ angular.module('a8m.math.degrees', ['a8m.math'])
 	}
 }]);
 
- 
- 
+
+
 /**
  * @ngdoc filter
  * @name formatBytes
  * @kind function
  *
  * @description
- * Convert bytes into appropriate display 
+ * Convert bytes into appropriate display
  * 1024 kilobytes => 1 MB
  */
 angular.module('a8m.math.kbFmt', ['a8m.math'])
@@ -27538,8 +27538,8 @@ angular.module('a8m.math.radians', ['a8m.math'])
 	}
 }]);
 
- 
- 
+
+
 /**
  * @ngdoc filter
  * @name Radix
@@ -27576,7 +27576,7 @@ angular.module('a8m.math.shortFmt', ['a8m.math'])
     return function (number, decimal) {
       if(isNumber(decimal) && isFinite(decimal) && decimal%1===0 && decimal >= 0 &&
         isNumber(number) && isFinite(number)){
-                    
+
           if(number < 1e3) {
               return number;
           } else if(number < 1e6) {
@@ -28209,7 +28209,7 @@ angular.module('a8m.filter-watcher', [])
 
     }];
   });
-  
+
 
 /**
  * @ngdoc module
@@ -30471,7 +30471,7 @@ function uiUploader($log) {
     self.options = {};
     self.activeUploads = 0;
     $log.info('uiUploader loaded');
-    
+
     function addFiles(files) {
         for (var i = 0; i < files.length; i++) {
             self.files.push(files[i]);
@@ -30493,15 +30493,15 @@ function uiUploader($log) {
             ajaxUpload(self.files[i], self.options.url);
         }
     }
-    
+
     function removeFile(file){
         self.files.splice(self.files.indexOf(file),1);
     }
-    
+
     function removeAll(){
         self.files.splice(0,self.files.length);
     }
-    
+
     return {
         addFiles: addFiles,
         getFiles: getFiles,
@@ -30510,7 +30510,7 @@ function uiUploader($log) {
         removeFile: removeFile,
         removeAll:removeAll
     };
-    
+
     function getHumanSize(bytes) {
         var sizes = ['n/a', 'bytes', 'KiB', 'MiB', 'GiB', 'TB', 'PB', 'EiB', 'ZiB', 'YiB'];
         var i = +Math.floor(Math.log(bytes) / Math.log(1024));
@@ -34010,7 +34010,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
       //we need to propagate user's query so we can higlight matches
       scope.query = undefined;
 
-      //Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later 
+      //Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
       var timeoutPromise;
 
       var scheduleSearchWithTimeout = function(inputValue) {
@@ -40492,7 +40492,7 @@ angular.module("../assets/js/_ualib-home.tpl.html", []).run(["$templateCache", f
  * replace the dash with an underscore when adding it to the object below.
  *
  * .noConflict()
- * The routing is enclosed within an anonymous function so that you can 
+ * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  *
  * Google CDN, Latest jQuery
@@ -40502,7 +40502,7 @@ angular.module("../assets/js/_ualib-home.tpl.html", []).run(["$templateCache", f
 /*
 (function($) {
 
-// Use this variable to set up the common and page specific functions. If you 
+// Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
 var Roots = {
   // All pages
@@ -40577,3 +40577,55 @@ $(document).ready(UTIL.loadEvents);
             $rootScope.appClass = $location.path().split('/')[1];
         });
     }]);
+    angular.module('ualib')
+    .controller('ModalDemoCtrl', function ($scope, $modal, $log) {
+
+      $scope.items = ['item1', 'item2', 'item3'];
+
+      $scope.animationsEnabled = true;
+
+      $scope.open = function (size) {
+
+        var modalInstance = $modal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'myModalContent.html',
+          controller: 'ModalInstanceCtrl',
+          size: size,
+          resolve: {
+            items: function () {
+              return $scope.items;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.selected = selectedItem;
+        }, function () {
+          $log.info('Modal dismissed at: ' + new Date());
+        });
+      };
+
+      $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+      };
+
+    });
+
+    // Please note that $modalInstance represents a modal window (instance) dependency.
+    // It is not the same as the $modal service used above.
+
+    angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+      $scope.items = items;
+      $scope.selected = {
+        item: $scope.items[0]
+      };
+
+      $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+      };
+
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
+    });

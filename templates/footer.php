@@ -70,4 +70,5 @@
   <?php
     include WEBAPPS_PATH . "siteSurvey/loadForm.php";
   ?>
+
 </footer>
