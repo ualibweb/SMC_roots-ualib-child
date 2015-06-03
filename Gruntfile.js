@@ -22,6 +22,7 @@ module.exports = function(grunt) {
                 'Gruntfile.js',
                 'assets/js/*.js',
                 '!assets/js/scripts.js',
+                '!assets/js/smc.js',
                 '!assets/**/*.min.*'
             ]
         },
